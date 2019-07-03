@@ -1,0 +1,20 @@
+pragma solidity ^0.4.24;
+
+import "chainlink/contracts/ChainlinkClient.sol";
+
+// MyContract inherits the Chainlinked contract to gain the
+// functionality of creating Chainlink requests.
+contract MyContract is ChainlinkClient {
+  constructor(address _link) public {
+    // Set the address for the LINK token for the network.
+    if(_link == address(0)) {
+      // Useful for deploying to public networks.
+      setPublicChainlinkToken();
+    } else {
+      // Useful if you're deploying to a local network.
+      setChainlinkToken(_link);
+    }
+  }
+  // Additional functions here:
+  
+}
